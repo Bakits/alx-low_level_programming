@@ -1,24 +1,20 @@
 #include <stdio.h>
 /**
-* main - Prints first 50 Fibonacci numbers, starting with 1 and 2,
-*        separated by a comma followed by a space.
-*
-* Return: Always 0.
+* main - Prints prints the sum of all the multiples of 3 or 5 below 1024
+* Return: Always 0
 */
 int main(void)
 {
-int count;
-unsigned long fib1 = 0, fib2 = 1, sum;
-for (count = 0; count < 50; count++)
+int i, z = 0;
+while (i <1024)
 {
-sum = fib1 + fib2;
-printf("%lu", sum);
-fib1 = fib2;
-fib2 = sum;
-if (count == 49)
-printf("\n");
-else
-printf(", ");
+if ((i % 3 == 0) || (i % 5 == 0))
+{
+z += i;
 }
+i++;
+}
+printf("%d\n", z);
 return (0);
 }
+
