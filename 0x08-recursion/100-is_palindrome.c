@@ -1,38 +1,49 @@
-#include "main.h"
-#include <stdio.h>
-
+int check_palindrome_recursive(char *start, char *end);
+int _strlen_recursion(char *s);
 /**
- * main - check the code
+ * is_palindrome - checks if string is palindrome
  *
- * Return: Always 0.
+ * @s: string to check
+ *
+ * Return: 1 if palindrome, 0 otherwise
  */
-int main(void)
+int is_palindrome(char *s)
 {
-int r;
+char *end;
+int sLength;
+if (!*s) /* empty string */
+return (1);
+sLength = _strlen_recursion(s);
+end = (s + (sLength - 1)); /* set end to char before null byte */
+return (check_palindrome_recursive(s, end));
+}
+/**
+ * check_palindrome_recursive - checks if string is palindrome
+ *
+ * @start: starting point of string to check
+ * @end: last valid character in string before null byte
+ *
+ * Return: 1 if palindrome, 0 if failure (not palindrome)
+ */
+int check_palindrome_recursive(char *start, char *end)
 
-r = wildcmp("main.c", "*.c");
-printf("%d\n", r);
-r = wildcmp("main.c", "m*a*i*n*.*c*");
-printf("%d\n", r);
-r = wildcmp("main.c", "main.c");
-printf("%d\n", r);
-r = wildcmp("main.c", "m*c");
-printf("%d\n", r);
-r = wildcmp("main.c", "ma********************************c");
-printf("%d\n", r);
-r = wildcmp("main.c", "*");
-printf("%d\n", r);
-r = wildcmp("main.c", "***");
-printf("%d\n", r);
-r = wildcmp("main.c", "m.*c");
-printf("%d\n", r);
-r = wildcmp("main.c", "**.*c");
-printf("%d\n", r);
-r = wildcmp("main-main.c", "ma*in.c");
-printf("%d\n", r);
-r = wildcmp("main", "main*d");
-printf("%d\n", r);
-r = wildcmp("abc", "*b");
-printf("%d\n", r);
+{
+if (*start != *end)
 return (0);
+if (start > end) /* checked all chars up to middle */
+return (1);
+return (check_palindrome_recursive(start + 1, end - 1));
+}
+/**
+ * _strlen_recursion - gets strlen of s via recursive algorithm
+ *
+ * @s: string to check length of
+ *
+ * Return: int containing length of string
+ */
+int _strlen_recursion(char *s)
+{
+if (!*s)
+return (0);
+return (1 + _strlen_recursion(s + 1));
 }
