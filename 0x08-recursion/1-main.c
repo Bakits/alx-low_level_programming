@@ -1,4 +1,4 @@
-#include "../main.h"
+void _puts_recursion(char *);
 
 /**
  * main - check the code for ALX students.
@@ -7,6 +7,6 @@
  */
 int main(void)
 {
-print_rev_recursion("\nColton Walker");
+_puts_recursion("Talk is cheap. Show me the code");
 return (0);
 }
